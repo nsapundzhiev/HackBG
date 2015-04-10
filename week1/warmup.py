@@ -65,7 +65,7 @@ def count_vowels(str):
             count += 1
     return count
 
-def count_vowels(string):
+def count_consonants(string):
     count = 0
     symbols = 'bcdfghjklmnpqrstvwxz'
     string  = string.lower()
