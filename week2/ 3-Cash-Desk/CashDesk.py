@@ -4,18 +4,28 @@ from BatchBill import BatchBill
 
 class CashDesk():
 
-	def __init__(self):
-		self.desk = {}
+    def __init__(self):
+        self.desk = {}
 
-	def take_money(self, currency):
-		self.desk.append(currency)
+    def new_currency(self, bill):
+        if bill in self.desk:
+            self.desk[bill] += 1
+        else:
+            self.desk[bill] = 1
 
-	def total(self):
-		result = 0
-		for money in self.desk:
-			result += int(money)
+    def take_money(self, money):
+        if isinstance(money, Bill):
+            self.new_currency(money)
+        elif isinstance(money, BatchBill):
+            for bill in money:
+                self.new_currency(bill)
 
-		return result
+    def total(self):
+        result = 0
+        for money in self.desk:
+            result += int(money)
+
+        return result
 
     def inspect(self):
 
@@ -31,10 +41,9 @@ class CashDesk():
             bills.sort()
 
             for bill in bills:
-                line = "${} - {}".format(int(bill), self.desk[bill])
+                line = ("${} - {}".format(int(bill), self.desk[bill]))
                 lines.append(line)
         return "\n".join(lines)
-
 
 
 
