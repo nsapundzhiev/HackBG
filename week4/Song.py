@@ -38,6 +38,10 @@ class Song:
     def __hash__(self):
         return hash(str(self))
 
+
+    def __repr__(self):
+        return self.__str__()
+
     def get_hours(self):
         return self.hours
 
@@ -62,7 +66,6 @@ class Song:
         if seconds:
             return self.get_seconds()
 
-
-
-song = Song("gagsa", "gas", "gafaa", "1:30:63")
-print(song.length_print())
+	def prepare_json(self):
+		song_dict = self.__dict__
+		return {key: song_dict[key] for key in song_dict if not key.startswith("_")}

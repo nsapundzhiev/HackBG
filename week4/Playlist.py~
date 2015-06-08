@@ -8,10 +8,5 @@ class Playlist:
     def add_song(self, song):
         pass
 
-    def remove_song(self, song):
-        pass
-
-    def add_songs(self, *songs):
-        pass
 
 

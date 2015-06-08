@@ -1,4 +1,4 @@
-class Music:
+class Song:
 
     def __init__(self, title, artist, album, length):
         self.title = title
@@ -37,6 +37,10 @@ class Music:
 
     def __hash__(self):
         return hash(str(self))
+
+
+    def __repr__(self):
+        return self.__str__()
 
     def get_hours(self):
         return self.hours
